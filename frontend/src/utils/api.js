@@ -1,19 +1,17 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:5000/api/v1',
+  baseURL: '/api/v1',
 });
 
 // Request interceptor for API calls
 api.interceptors.request.use(
   async (config) => {
     const token = localStorage.getItem('study_ai_token');
+    config.headers['Accept'] = 'application/json';
+    config.headers['Content-Type'] = 'application/json';
     if (token) {
-      config.headers = {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },

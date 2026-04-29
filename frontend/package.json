@@ -2,6 +2,7 @@
   "name": "study-predictor-ui",
   "version": "1.0.0",
   "private": true,
+  "proxy": "http://localhost:5005",
   "dependencies": {
     "autoprefixer": "^10.5.0",
     "axios": "^1.15.2",

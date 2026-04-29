@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { BrainCircuit, Mail, Lock } from 'lucide-react';
 
@@ -16,7 +16,7 @@ export default function LoginPage() {
     setError('');
     
     try {
-      const res = await axios.post('http://127.0.0.1:5000/api/v1/login', form);
+      const res = await api.post('/login', form);
       const { token, user } = res.data;
       
       // Store JWT token securely in localStorage

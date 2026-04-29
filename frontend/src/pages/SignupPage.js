@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { useNavigate, Link } from 'react-router-dom';
 import { BrainCircuit, Mail, Lock, User } from 'lucide-react';
 
@@ -15,7 +15,7 @@ export default function SignupPage() {
     setError('');
     
     try {
-      await axios.post('http://127.0.0.1:5000/api/v1/signup', form);
+      await api.post('/signup', form);
       alert('Signup successful! Please login.');
       navigate('/login');
     } catch (err) {
